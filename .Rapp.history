@@ -1,0 +1,37 @@
+x <- rnorm(100)
+y <- rnorm(100)
+z <- rnorm(100)
+plot(x,z)
+getwd()
+setwd("/Users/jerkelens/Projects/R/datasciencecoursera/data_cleaning/Project1")
+data <- read.csv("./data/household_power_consumption.txt", sep=";")#
+data$Date <- as.Date(data$Date, format="%d/%m/%Y")#
+filter <- data$Date == as.Date('2007-02-01') | #
+  data$Date == as.Date('2007-02-02')#
+subset <- data[filter,]#
+subset$Global_active_power <- as.numeric(subset$Global_active_power)#
+hist(subset$Global_active_power / 1000, #
+     col=c("red"), #
+     main="Global Active Power",#
+     xlab="Global Active Power (kilowatts)")
+hist(subset$Global_active_power / 1000, #
+      col=c("red"), #
+      main="Global Active Power",#
+      xlab="Global Active Power (kilowatts)", xaxt='n')
+axis(side=1, at=seq(0,6,2))
+hist(subset$Global_active_power / 1000, #
+      col=c("red"), #
+      main="Global Active Power",#
+      xlab="Global Active Power (kilowatts)", xaxt='n')
+?axis
+hist(subset$Global_active_power / 1000, #
+      col=c("red"), #
+      main="Global Active Power",#
+      xlab="Global Active Power (kilowatts)")
+head(data$Global_active_power)
+hist(subset$Global_active_power, #
+      col=c("red"), #
+      main="Global Active Power",#
+      xlab="Global Active Power (kilowatts)")
+class(data)
+class(data$Global_active_power)
